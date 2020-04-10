@@ -2,6 +2,10 @@ variable "region" {
   default = ""
 }
 
+variable "s3_bucket" {
+  default = ""
+}
+
 #=====Security Group
 
 variable "allow_ports" {
