@@ -2,7 +2,7 @@ variable "region" {
   default = ""
 }
 
-variable "s3_bucket" {
+variable "tf_state_bucket" {
   default = ""
 }
 
