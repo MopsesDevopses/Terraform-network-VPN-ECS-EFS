@@ -1,9 +1,9 @@
-data "aws_ami" "latest_ami_for_ECS" {
-  owners      = ["591542846629"]
+data "aws_ami" "latest_ami_for_ubuntu" {
+  owners      = ["099720109477"]
   most_recent = true
   filter {
     name   = "name"
-    values = ["amzn2-ami-ecs-hvm-2.0.*-x86_64-ebs"]
+    values = ["ubuntu/images/hvm-instance/ubuntu-bionic-18.04-amd64-server-*"]
   }
 }
 
@@ -104,7 +104,7 @@ resource "aws_autoscaling_attachment" "project" {
 
 resource "aws_launch_configuration" "project" {
   name                 = "${var.project}-MAIN Server"
-  image_id             = data.aws_ami.latest_ami_for_ECS.id
+  image_id             = data.aws_ami.latest_ami_for_ubuntu.id
   instance_type        = "${var.type_instance}"
   security_groups      = ["${var.sg_id}"]
   iam_instance_profile = "${var.iam_name}"
